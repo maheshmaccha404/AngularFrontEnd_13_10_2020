@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div class="row">
+          <h4 style="text-align: center;">Category</h4>
+          <div class="col s5">
+            <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="categoryService.selectedCategory._id">
+              <div class="row">
+                <div class="input-field col s12">
+                  Category Name * :
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="categoryService.selectedCategory.name"  required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  Description :
+                  <input type="text" name="description" #name="ngModel" [(ngModel)]="categoryService.selectedCategory.description" >
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom left" type="submit" [disabled]="!categoryForm.valid">Submit</button>
+                  <button class="btn btn-custom left" type="button" (click)="resetForm(categoryForm)">Reset</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col s7">
+              <table class="responsive-table highlight">
+                  <thead>
+                    <tr>
+                      <th>Category Name</th>
+                      <th>Description</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let category of categoryService.category">
+                    <td>{{category.name}}</td>
+                    <td>{{category.description}}</td>
+                    <td>
+                        <a class="action-btn" (click)="onEdit(category)">
+                          <i class="material-icons">edit</i>
+                        </a>
+                        <a class="action-btn" (click)="onDelete(category._id,categoryForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

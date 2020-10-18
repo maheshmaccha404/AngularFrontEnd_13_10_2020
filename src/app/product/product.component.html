@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div class="row">
+          <h4 style="text-align: center;">Product</h4>
+          <div class="col s5">
+            <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="productService.selectedProduct._id">
+              <div class="row">
+                <div class="input-field col s12">
+                  Product Name * :
+                  <input type="text" val="material-icons" name="product_name" #name="ngModel" [(ngModel)]="productService.selectedProduct.product_name" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  Quantity :
+                  <input type="text" name="quantity" #name="ngModel" [(ngModel)]="productService.selectedProduct.quantity">
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">                  
+                  Category :
+                  <select class="browser-default custom-select" name= "category"  [(ngModel)]="productService.selectedProduct.category">
+                    <option *ngFor="let category of category_list" [ngValue] = "category.name">
+                      {{ category.name }}
+                      </option>     
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  Price :
+                  <input type="text" name="price" #name="ngModel" [(ngModel)]="productService.selectedProduct.price" >
+                </div>
+              </div>
+          
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom left" type="submit" [disabled]="!productForm.valid">Submit</button>
+                  <button class="btn btn-custom left" type="button" (click)="resetForm(productForm)">Reset</button>
+                </div>
+              </div>
+          
+          
+            </form>
+          </div>
+
+          <div class="col s7">
+            <table class="responsive-table highlight">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Category Name</th>
+                    <th>price</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr *ngFor="let product of productService.product">
+                  <td>{{product.product_name}}</td>
+                  <td>{{product.quantity}}</td>
+                  <td>{{product.category}}</td>
+                  <td>{{product.price}}</td>
+                  <td>
+                      <a class="action-btn" (click)="onEdit(product)">
+                        <i class="material-icons">edit</i>
+                      </a>
+                      <a class="action-btn" (click)="onDelete(product._id,productForm)">
+                        <i class="material-icons">delete</i>
+                      </a>
+                    </td>
+                </tr>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
