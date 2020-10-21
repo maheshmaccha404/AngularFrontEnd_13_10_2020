@@ -22,8 +22,8 @@
               <div class="row">
                 <div class="input-field col s12">                  
                   Category :
-                  <select class="browser-default custom-select" name= "category"  [(ngModel)]="productService.selectedProduct.category">
-                    <option *ngFor="let category of category_list" [ngValue] = "category.name">
+                  <select class="browser-default custom-select" name= "category" #name = "ngModel"  [(ngModel)]="productService.selectedProduct.category">
+                    <option *ngFor="let category of category_list" [ngValue] = "[category]" >
                       {{ category.name }}
                       </option>     
                   </select>
@@ -61,7 +61,7 @@
                 <tr *ngFor="let product of productService.product">
                   <td>{{product.product_name}}</td>
                   <td>{{product.quantity}}</td>
-                  <td>{{product.category}}</td>
+                  <td *ngFor="let category of product.category">  {{category.name}} </td>
                   <td>{{product.price}}</td>
                   <td>
                       <a class="action-btn" (click)="onEdit(product)">

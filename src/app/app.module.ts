@@ -9,7 +9,10 @@ import { CategoryComponent } from './category/category.component';
 
 import { AppRoutingModule , RoutingComponent } from './app-routing.module'; 
 import { ProductComponent } from './product/product.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
+
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -18,15 +21,18 @@ import { ProductComponent } from './product/product.component';
     CategoryComponent,
 
     ProductComponent,
-    RoutingComponent
-
+    RoutingComponent,
+    ProductListComponent,
+    // JwPaginationComponent,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,       NgxPaginationModule
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

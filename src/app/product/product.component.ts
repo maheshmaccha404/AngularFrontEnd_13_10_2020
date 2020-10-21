@@ -32,19 +32,18 @@ export class ProductComponent implements OnInit {
       _id: "",
       product_name: "",
       quantity: null,
-      category:"",
+      category : null,
       price: null,
+      name : ""
     }
   }
   category_list = [];
   refreshproductList() {
     this.productService.getproductList().subscribe((res) => {
       this.productService.product = res as Product[];
-      // console.log(this.productService.product);
     });
     this.productService.getcategoryList().subscribe((res) => {
       this.category_list = res as category[];
-      console.log(this.category_list);
     });
   }
 
@@ -53,7 +52,7 @@ export class ProductComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-
+    console.log(form);
     if (form.value._id == "") {
       this.productService.postproduct(form.value).subscribe((res) => {
         this.resetForm(form);
@@ -72,7 +71,7 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  onEdit(p : Product) {
+  onEdit(p : Product) {    
     this.productService.selectedProduct = p;
   }
 
