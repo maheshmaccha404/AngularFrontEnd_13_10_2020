@@ -34,6 +34,8 @@ export class ProductListComponent implements OnInit {
       }
     });
   }
+ 
+  
   
   onChange(event){
     this.pageSize = event

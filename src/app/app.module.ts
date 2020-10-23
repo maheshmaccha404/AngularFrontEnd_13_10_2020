@@ -13,6 +13,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 
 
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ListComponent } from './list/list.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ProductComponent,
     RoutingComponent,
     ProductListComponent,
+    ListComponent,
     // JwPaginationComponent,
     
   ],

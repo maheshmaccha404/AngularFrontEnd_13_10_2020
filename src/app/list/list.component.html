@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div class="row">
+          <h4 style="text-align: center;">List</h4>
+          <div>
+            Page number : {{page}}
+          </div>
+          <div class="row">
+              <div class="input-field col s2">           
+              Page Size:  
+              <select class="browser-default custom-select" name= "page" (change)="onChange($event.target.value)">
+                <option *ngFor="let page of limit_size" [ngValue] = "page" [selected] ="page == default_value">
+                  {{ page }}
+                </option>     
+              </select>
+              
+            </div>
+          </div>
+          <table class="responsive-table highlight">
+            <thead>
+              <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Category Name</th>
+                <th>Category ID</th>
+              </tr>
+            </thead>
+             <tr *ngFor="let product of productService.product ">
+              <td>{{product._id}}</td>
+              <td>{{product.product_name}}</td>
+              <td *ngFor="let category of product.category"> {{category.name}} </td>
+              <td *ngFor="let category of product.category"> {{category._id}}  </td>
+            </tr>
+          </table>
+
+        </div>
+        <button (click) ="onclick(page-1)" >prev </button>
+        <button  *ngFor="let item of createRange(pages_total); let myIndex = index" (click) ="onclick(item)">
+             {{  item   }} 
+        </button>
+        <button (click) ="onclick(page+1)" >next </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  

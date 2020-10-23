@@ -33,4 +33,8 @@ export class ProductService {
   deleteproduct(_id: string) {
     return this.http.delete(this.baseURL + `/${_id}`);
   }
+
+  getlist(page : number , limit : number){
+    return this.http.get(this.baseURL+`/${page}`+`-`+ `${limit}`);
+  }
 }
